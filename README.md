@@ -54,7 +54,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: [https://github.com/chauhan-himani/kube_manifest](https://github.com/chauhan-himani/kube_manifest)
+    repoURL: https://github.com/jaron360/ArgoCD-Integration/
     targetRevision: HEAD
     path: manifest
   destination:
