@@ -1,5 +1,5 @@
 # ArgoCD-Integration
-Walking through the process to install ArgoCD with EKS and deploy a sample application
+Walking through the process to install ArgoCD with EKS and deploy a sample application. Additionally, we will configure syncing with the GitHub manifest repository
 
 ## Architecture:
 
@@ -43,3 +43,42 @@ Walking through the process to install ArgoCD with EKS and deploy a sample appli
 - http://afa26b4c6f44f41c89f2d27b34cbdc0f-2066168060.us-east-1.elb.amazonaws.com
 
 ### 6. Sync the Github Manifest repo with ArgoCD
+- Apply this configuration to a file called argocd-app.yaml. This will configure synchronization between Argocd and the GitHub manifest repository
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-app-argo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: [https://github.com/chauhan-himani/kube_manifest](https://github.com/chauhan-himani/kube_manifest)
+    targetRevision: HEAD
+    path: manifest
+  destination:
+    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    namespace: myapp
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+```
+
+### 6. Apply the manifest
+- kubectl apply -f argocd-app.yaml
+
+
+### 7. After successful deployment, you should see your application in ArgoCD UI
+
+<img width="734" height="512" alt="image" src="https://github.com/user-attachments/assets/2c5b5dee-a449-4dba-88b1-2d56fc4968e3" />
+
+
+### Application Tree
+
+<img width="1353" height="561" alt="image" src="https://github.com/user-attachments/assets/a9e1d826-dc2e-4ec5-9034-f2f46f627ada" />
+
+
