@@ -1,20 +1,19 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: todo-app-argo
-  namespace: argocd
+  name: myapp
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/jaron360/ArgoCD-Integration/
-    targetRevision: HEAD
-    path: manifest
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: myapp
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      selfHeal: true
-      prune: true
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: chauhanhimani/todo-app:build-25
+        ports:
+        - containerPort: 80
