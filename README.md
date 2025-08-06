@@ -76,7 +76,8 @@ spec:
 
 ### 7. After successful deployment, you should see your application in ArgoCD UI
 
-<img width="734" height="512" alt="image" src="https://github.com/user-attachments/assets/2c5b5dee-a449-4dba-88b1-2d56fc4968e3" />
+<img width="552" height="430" alt="image" src="https://github.com/user-attachments/assets/e1c4b3d2-71bd-40f6-840b-d43956b99d65" />
+
 
 
 ### Application Tree
