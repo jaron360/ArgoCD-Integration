@@ -1,5 +1,7 @@
 # ArgoCD-Integration
-Walking through the process to install ArgoCD with EKS and deploy a sample application. Additionally, we will configure syncing with the GitHub manifest repository
+Walking through the process to install ArgoCD with EKS and deploy a sample application. Additionally, we will configure syncing with the GitHub manifest repository.
+
+The purpose of ArgoCD is to automate the process of deploying updates in your environment (EKS) based on changes made within the connected GitHub repository. ArgoCD acts as a CI (continuous integration) tool, constantly comparing the actual state of the cluster/application with the desired state based on what is present in the GitHub repository.
 
 ## Architecture:
 
